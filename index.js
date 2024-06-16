@@ -1,21 +1,21 @@
 const http = require("http")
-const sendHTMLFile = require("../util/getFile")
+const sendHTMLFile = require("./util/getFile")
 
 let path; 
 
 const setPath = (url) => {
   switch (url) {
     case "/index.html":
-      path = "index.html";
+      path = "src/index.html";
       break;
     case "/about.html":
-      path = "about.html";
+      path = "src/about.html";
       break;
     case "/contact-me.html":
-      path = "contact-me.html";
+      path = "src/contact-me.html";
       break;
     default:
-      path = "404.html";
+      path = "src/404.html";
       break;
   }
 }
