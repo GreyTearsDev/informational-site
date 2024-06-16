@@ -1,5 +1,3 @@
-// const EventEmitter = require("events")
-// const eventEmitter = new EventEmitter()
 const http = require("http")
 const sendHTMLFile = require("../util/getFile")
 
