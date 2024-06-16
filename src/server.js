@@ -29,7 +29,7 @@ const server = http.createServer((req, res) => {
   sendHTMLFile(path, res)
 })
 
-server.listen(3000, "localhost", (req, res) => {
+server.listen(8000, "localhost", (req, res) => {
   console.log("The server as been started...")
 })
 
