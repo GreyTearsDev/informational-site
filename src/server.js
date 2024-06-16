@@ -6,7 +6,6 @@ const sendHTMLFile = require("../util/getFile")
 let path; 
 
 const setPath = (url) => {
-  console.log(url)
   switch (url) {
     case "/index.html":
       path = "index.html";
