@@ -1,33 +1,29 @@
 const http = require("http")
-const sendHTMLFile = require("./util/getFile")
+const express = require("express")
+const path = require("path")
+const app = express()
+const port = 3000;
+const publicDirectory = "public"
 
-let path; 
+app.use(express.static(`./${publicDirectory}`));
 
-const setPath = (url) => {
-  switch (url) {
-    case "/index.html":
-      path = "src/index.html";
-      break;
-    case "/about.html":
-      path = "src/about.html";
-      break;
-    case "/contact-me.html":
-      path = "src/contact-me.html";
-      break;
-    default:
-      path = "src/404.html";
-      break;
-  }
-}
-
-
-const server = http.createServer((req, res) => {
-  setPath(req.url)
-  sendHTMLFile(path, res)
+app.get("/", (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, publicDirectory, "index.html"))
 })
 
-server.listen(8000, "localhost", (req, res) => {
-  console.log("The server as been started...")
+app.get("/about", (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, publicDirectory, "about.html"))
 })
 
+app.get("/contact-me", (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, publicDirectory, "contact-me.html"))
+})
+
+app.all("*", (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, publicDirectory, "404.html"))
+})
+
+app.listen(port, () => {
+  console.log(`The server as been started on port: ${port}`)
+})
 
